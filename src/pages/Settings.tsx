@@ -270,7 +270,7 @@ export default function Settings() {
                 message:
                   'Fetches every book from the Google Sheet again and merges it here. Local changes are kept when newer.',
                 confirmLabel: 'Re-download',
-              }).then((ok) => ok && library.sync.fullResync())
+              }).then((ok) => { if (ok) return library.sync.fullResync(); }) 
             }
           >
             Re-download from sheet
