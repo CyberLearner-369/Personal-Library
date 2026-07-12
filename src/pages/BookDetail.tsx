@@ -13,7 +13,7 @@ import {
 } from 'lucide-react';
 import { useBook, useLibrary } from '@/state/LibraryContext';
 import { library } from '@/data/libraryService';
-import { bookToInput, isDeleted, type Book, type BookStatus } from '@/types/book';
+import { bookToInput, isDeleted, type BookStatus } from '@/types/book';
 import { daysSince, fmtDate, fmtNpr, todayIso } from '@/lib/format';
 import { CoverImage } from '@/components/books/CoverImage';
 import { SpineMark } from '@/components/books/SpineMark';
