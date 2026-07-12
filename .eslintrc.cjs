@@ -14,7 +14,7 @@ module.exports = {
   plugins: ['@typescript-eslint', 'react', 'jsx-a11y'],
   settings: { react: { version: 'detect' } },
   rules: {
-    '@typescript-eslint/no-unused-vars': ['error', { argsIgnorePattern: '^_' }],
+ '@typescript-eslint/no-unused-vars': ['error', { argsIgnorePattern: '^_', destructuredArrayPattern: '^_', ignoreRestSiblings: true }],
     'react/prop-types': 'off',
     'no-console': ['warn', { allow: ['warn', 'error', 'info'] }],
   },
