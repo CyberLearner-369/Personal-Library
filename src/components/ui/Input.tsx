@@ -37,7 +37,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(function Input(
           className={cn(
             'h-10 w-full rounded-lg border bg-surface px-3 text-sm text-ink transition-colors placeholder:text-faint',
             error ? 'border-danger' : 'border-line hover:border-faint',
-            trailing && 'pr-11',
+            !!trailing && 'pr-11', 
           )}
           {...rest}
         />
