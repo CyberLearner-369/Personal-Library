@@ -1,0 +1,129 @@
+@import '@fontsource-variable/inter';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Paper & ink — light reading room */
+    --c-page: 246 245 241;
+    --c-surface: 255 255 255;
+    --c-sunken: 238 236 230;
+    --c-ink: 28 25 23;
+    --c-muted: 87 83 78;
+    --c-faint: 158 152 146;
+    --c-line: 229 227 221;
+    /* Viridian buckram accent */
+    --c-accent: 15 118 110;
+    --c-accent-ink: 15 94 88;
+    --c-accent-soft: 209 244 238;
+    --c-on-accent: 255 255 255;
+    /* Gilt for favorites */
+    --c-gilt: 161 98 7;
+    --c-danger: 185 28 28;
+    --c-danger-soft: 254 226 226;
+    --c-ok: 21 128 61;
+  }
+
+  .dark {
+    /* Reading room at night */
+    --c-page: 16 20 19;
+    --c-surface: 25 30 29;
+    --c-sunken: 11 14 13;
+    --c-ink: 237 236 231;
+    --c-muted: 170 165 158;
+    --c-faint: 118 112 105;
+    --c-line: 45 51 49;
+    --c-accent: 45 212 191;
+    --c-accent-ink: 94 234 212;
+    --c-accent-soft: 17 46 42;
+    --c-on-accent: 12 16 15;
+    --c-gilt: 250 204 21;
+    --c-danger: 248 113 113;
+    --c-danger-soft: 63 26 26;
+    --c-ok: 74 222 128;
+  }
+
+  html {
+    @apply antialiased;
+    color-scheme: light;
+  }
+  html.dark {
+    color-scheme: dark;
+  }
+
+  body {
+    @apply bg-page font-sans text-[15px] leading-relaxed text-ink;
+  }
+
+  * {
+    @apply border-line;
+  }
+
+  :focus-visible {
+    @apply outline-none ring-2 ring-accent ring-offset-2 ring-offset-page;
+  }
+
+  ::selection {
+    background: rgb(var(--c-accent) / 0.25);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+@layer components {
+  .card {
+    @apply rounded-card border border-line bg-surface shadow-card;
+  }
+
+  .skeleton {
+    @apply relative overflow-hidden rounded-md bg-sunken;
+  }
+  .skeleton::after {
+    content: '';
+    @apply absolute inset-0 -translate-x-full animate-shimmer;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgb(var(--c-surface) / 0.7),
+      transparent
+    );
+  }
+}
+
+/* ---------- print: catalogue report & spine labels ---------- */
+@media print {
+  body {
+    background: #fff !important;
+    color: #000;
+    font-size: 11px;
+  }
+  .no-print {
+    display: none !important;
+  }
+  .print-table th,
+  .print-table td {
+    border: 1px solid #999;
+    padding: 3px 6px;
+    text-align: left;
+    vertical-align: top;
+  }
+  .print-table {
+    border-collapse: collapse;
+    width: 100%;
+  }
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+}
